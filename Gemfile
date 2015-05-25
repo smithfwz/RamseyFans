@@ -54,6 +54,8 @@ group :development, :test do
 
   gem 'shoulda-matchers'
 
+  gem 'factory_girl_rails'
+
 end
 
 group :test do
