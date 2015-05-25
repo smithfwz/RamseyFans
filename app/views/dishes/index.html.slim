@@ -1,0 +1,11 @@
+#dishes_list
+	h1.page_title Dishes listing
+	= link_to('Create', new_dish_path, { :class=>'create'})
+	hr
+	- @dishes.each do |dish|
+		.dish
+			h2.title= dish.title
+			.description= dish.description
+			.actions
+				.edit= link_to('Edit', edit_dish_path(dish.id))	
+				.delete= link_to('Delete', dish_path(dish.id))
