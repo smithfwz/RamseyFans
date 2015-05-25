@@ -5,6 +5,5 @@
 		.dish
 			h2.title= dish.title
 			.description= dish.description
-			.cost= dish.cost
-			.pax= dish.pax
-			.vegetarian= dish.vegetarian
+			.actions
+				.detail= link_to('Detail', dish_path(dish))

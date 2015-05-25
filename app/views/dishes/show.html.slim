@@ -1,0 +1,13 @@
+#dish_show
+	h1.page_title Dish detail
+	h2.title= @dish.title
+	.description
+		span Description: 
+		= @dish.description
+	.cost Cost:  $#{@dish.cost}
+	.pax
+		span Pax: 
+		= @dish.pax
+	.vegeterian
+		span Vegetarian: 
+		= @dish.vegetarian

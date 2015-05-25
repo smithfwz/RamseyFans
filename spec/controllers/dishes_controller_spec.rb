@@ -11,4 +11,13 @@ RSpec.describe DishesController, type: :controller do
 			expect(assigns(:dishes).size).to eq dishes.size
 		end
 	end
+
+	describe '#show' do 
+		let!(:dish) { create(:dish) }
+
+		it 'display a dishes' do 
+			get :show, id: dish
+			expect(assigns(:dish).id).to eq dish.id
+		end
+	end
 end
