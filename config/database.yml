@@ -18,7 +18,3 @@ development:
 test:
   <<: *default
   database: ramseyfans_test
-
-production:
-  <<: *default
-  database: ramseyfans_production
