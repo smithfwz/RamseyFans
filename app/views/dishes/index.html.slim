@@ -4,7 +4,7 @@
 			h1.page_title Dishes listing
 			.search
 				= form_tag('/dishes', :method => 'get', id: "search-form")
-					= text_field_tag :search, @keyword, placeholder: "search"
+					= text_field_tag "search_form[keyword]", @keyword, placeholder: "search"
 					= submit_tag "Search", :name => nil
 			- if @dishes.any?
 				- @dishes.each do |dish|

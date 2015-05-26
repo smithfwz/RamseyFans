@@ -3,9 +3,9 @@ class DishesController < ApplicationController
 	def index
 		@dishes = Dish.all
 
-		if params[:search]
-			@keyword = params[:search]
-			@dishes = @dishes.search_by(params[:search])
+		if params[:search_form] && params[:search_form][:keyword]
+			@keyword = params[:search_form][:keyword]
+			@dishes = @dishes.search_by(params[:search_form][:keyword])
 		end
 	end
 
