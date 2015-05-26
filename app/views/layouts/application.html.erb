@@ -9,6 +9,7 @@
 <body>
 
 <p class="navbar-text pull-right">
+
 <% if fan_signed_in? %>
   Logged in as <strong><%= current_fan.email %></strong>.
   <%= link_to 'Edit profile', edit_fan_registration_path, :class => 'navbar-link' %> |
@@ -18,8 +19,15 @@
   <%= link_to "Login", new_fan_session_path, :class => 'navbar-link'  %>
 <% end %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="container">
+	<div class="row">
+		<div class="message_devise col-sm-6">
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+		</div>
+	</div>
+</div>
+  
 
 <%= yield %>
 
