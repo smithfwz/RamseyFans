@@ -9,7 +9,7 @@ RSpec.describe DishesController, type: :controller do
 
 		it 'gets a list of dishes' do 
 			get :index
-			expect(assigns(:dishes).size).to eq dishes.size
+			expect(assigns(:dishes).size).to eq Dish.all.count
 		end
 
 		it 'show a dish from the search result' do 
