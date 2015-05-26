@@ -18,7 +18,7 @@ RSpec.describe 'User can sign up' do
 
 			click_on 'Register'
 			
-			expect(page).to have_content 'smith@futureworkz.com'
+			expect(page).to have_content 'Welcome! You have signed up successfully.'
 		end
 	end
 end
