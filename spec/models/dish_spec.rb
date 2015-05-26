@@ -6,4 +6,14 @@ RSpec.describe Dish, type: :model do
 		it { should validate_presence_of :title }
 		it { should validate_presence_of :description }
 	end
+
+	context 'search_by' do 
+		let!(:bun_dish) { create(:dish, title: 'Bun Bo') }
+		let!(:pho_dish) { create(:dish, title: 'Pho Ga' ) }
+		it 'search' do
+			ap pho_dish
+			ap Dish.search_by('pho').first.title
+			expect(Dish.search_by('pho').first.title).to eq 'Pho Ga'
+		end
+	end
 end
