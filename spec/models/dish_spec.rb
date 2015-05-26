@@ -11,8 +11,6 @@ RSpec.describe Dish, type: :model do
 		let!(:bun_dish) { create(:dish, title: 'Bun Bo') }
 		let!(:pho_dish) { create(:dish, title: 'Pho Ga' ) }
 		it 'search' do
-			ap pho_dish
-			ap Dish.search_by('pho').first.title
 			expect(Dish.search_by('pho').first.title).to eq 'Pho Ga'
 		end
 	end
