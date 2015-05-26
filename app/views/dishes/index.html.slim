@@ -1,9 +1,22 @@
 #dishes_list
-	h1.page_title Dishes listing
-	hr
-	- @dishes.each do |dish|
-		.dish
-			h2.title= dish.title
-			.description= dish.description
-			.actions
-				.detail= link_to('Detail', dish_path(dish))
+	.container
+		.row
+			h1.page_title Dishes listing
+			.search
+				= form_tag('/dishes', :method => 'get', id: "search-form")
+					= text_field_tag :search, @keyword, placeholder: "search"
+					= submit_tag "Search", :name => nil
+			- if @dishes.any?
+				- @dishes.each do |dish|
+					.dish.col-md-3
+						h2.title= link_to(dish.title, dish_path(dish))
+						.description
+							span Description: 
+							= dish.description
+						.create_date
+							span Create date: 
+							= dish.created_at.strftime("%d-%m-%Y")
+						.actions
+							= link_to('Detail', dish_path(dish), { :class => 'detail' })
+			- else
+				| No dish. Thanks!
