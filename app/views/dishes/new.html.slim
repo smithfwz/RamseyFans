@@ -1,0 +1,42 @@
+#dish_new
+	.container
+		h1.page_title Create/Edit product
+		.product_form.col-sm-9
+			= semantic_form_for @dish do |f|
+				.form-horizontal
+					.form-group
+						= f.label :title, :class => 'col-sm-2 control-label'
+						.col-sm-10
+							= f.text_field :title, autofocus: true, :class => 'form-control'
+							br
+							= f.object.errors[:title].inject {|messages, error| messages + " and " + error }
+
+					.form-group
+						= f.label :description, :class => 'col-sm-2 control-label'
+						.col-sm-10
+							= f.text_field :description, autofocus: true, :class => 'form-control'
+							br
+							= f.object.errors[:description].inject {|messages, error| messages + " and " + error }
+
+					.form-group
+						= f.label :cost, :class => 'col-sm-2 control-label'
+						.col-sm-10
+							= f.text_field :cost, autofocus: true, :class => 'form-control'
+							br
+							= f.object.errors[:cost].inject {|messages, error| messages + " and " + error }
+
+					.form-group
+						= f.label :pax, :class => 'col-sm-2 control-label'
+						.col-sm-10
+							= f.text_field :pax, autofocus: true, :class => 'form-control'
+							br
+							= f.object.errors[:pax].inject {|messages, error| messages + " and " + error }
+
+					.form-group
+						= f.label :vegetarian, :class => 'col-sm-2 control-label'
+						.col-sm-10
+							= f.check_box :vegetarian
+
+					.form-group
+						.col-sm-offset-2.col-sm-10
+							= f.submit "Create Dish", :class => "btn btn-default"
