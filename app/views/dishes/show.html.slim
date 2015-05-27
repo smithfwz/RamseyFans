@@ -7,9 +7,7 @@
 			= @dish.description
 		.cost Cost:  $#{@dish.cost}
 		.pax
-			span Pax: 
-			= @dish.pax
+			span Pax: #{@dish.pax}
 		.vegeterian
-			span Vegetarian: 
-			= @dish.vegetarian
+			span Vegetarian: #{@dish.vegetarian}
 	= link_to("Back to dishes listing", dishes_url)
