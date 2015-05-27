@@ -19,7 +19,7 @@ class DishesController < ApplicationController
 	end
 
 	def create
-		@dish = Dish.new(params.require(:dish).permit(:title, :description, :cost))
+		@dish = Dish.new(params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian))
 		if @dish.save
 			redirect_to dishes_url
 		else
