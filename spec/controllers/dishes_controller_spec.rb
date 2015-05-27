@@ -27,4 +27,42 @@ RSpec.describe DishesController, type: :controller do
 			expect(assigns(:dish).id).to eq dish.id
 		end
 	end
+
+	describe '#new' do 
+		context 'Success' do 
+			let!(:fan) { create(:fan) }
+			before { sign_in fan }
+
+			it 'fan login' do 
+				get :new
+				expect(assigns(:dish)).to be_a Dish
+			end
+		end
+
+		context 'Fail' do 
+			it 'render new fan on failure' do 
+				get :new
+				expect(response).to redirect_to new_fan_session_url
+			end
+		end
+	end
+
+	describe '#create' do
+		let!(:fan) { create(:fan) }
+
+		def do_request
+			post :create, dish: params
+		end
+
+		context 'Success' do 
+			before { sign_in fan }
+			let(:params) { build(:dish).attributes }
+
+			it 'save a dish' do 
+				expect{ do_request }.to change(Dish, :count).by(1)
+				expect(response).to redirect_to dishes_url
+			end
+		end
+	end
+
 end

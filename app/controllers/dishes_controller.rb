@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+	before_action :authenticate_fan!, except: [:index, :show]
 
 	def index
 		@dishes = Dish.all
@@ -11,6 +12,19 @@ class DishesController < ApplicationController
 
 	def show
 		@dish = Dish.find(dish_id) 
+	end
+
+	def new
+		@dish = Dish.new
+	end
+
+	def create
+		@dish = Dish.new(params.require(:dish).permit(:title, :description, :cost))
+		if @dish.save
+			redirect_to dishes_url
+		else
+			render :new
+		end
 	end
 
 
