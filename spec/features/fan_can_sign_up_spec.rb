@@ -10,8 +10,8 @@ RSpec.describe 'Fan can sign up' do
 
 			expect(Fan.all.count).to eq 0
 
-			fill_in 'fan[email]', with: 'smith@futureworkz.com'
-			fill_in 'fan[password]', with: '123123123'
+			fill_in 'fan[email]', 								with: 'smith@futureworkz.com'
+			fill_in 'fan[password]', 							with: '123123123'
 			fill_in 'fan[password_confirmation]', with: '123123123'
 
 			click_on 'Register'
@@ -30,7 +30,7 @@ RSpec.describe 'Fan can sign up' do
 
 			expect(page).not_to have_content 'Signed in successfully.'
 
-			fill_in 'fan[email]', with: 'smith@futureworkz.com'
+			fill_in 'fan[email]', 	 with: 'smith@futureworkz.com'
 			fill_in 'fan[password]', with: '123123123'
 
 			click_on 'Log in'
