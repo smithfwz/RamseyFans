@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -27,7 +28,7 @@ gem 'slim-rails'
 
 gem 'formtastic'
 
-gem 'devise'
+gem 'devise', '~> 3.5.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
