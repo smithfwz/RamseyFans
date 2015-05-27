@@ -5,9 +5,11 @@
 		.description
 			span Description: 
 			= @dish.description
-		.cost Cost:  $#{@dish.cost}
-		.pax
-			span Pax: #{@dish.pax}
-		.vegeterian
-			span Vegetarian: #{@dish.vegetarian}
-	= link_to("Back to dishes listing", dishes_url)
+		- if @dish.cost
+			.cost Cost:  $#{@dish.cost}
+		- if @dish.pax
+			.pax Pax: #{@dish.pax}
+		- if @dish.vegetarian
+			.vegeterian Vegetarian: #{@dish.vegetarian}
+	br
+	= link_to("Back to dishes listing", dishes_url, :class => 'btn btn-default')

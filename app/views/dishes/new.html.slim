@@ -1,9 +1,8 @@
 #dish_new
 	.container
-		h1.page_title Create/Edit product
+		h1.page_title Create/Edit dish
 		.product_form.col-sm-9
 			= semantic_form_for @dish do |f|
-				.form-horizontal
 					.form-group
 						= f.label :title, :class => 'col-sm-2 control-label'
 						.col-sm-10
@@ -40,3 +39,4 @@
 					.form-group
 						.col-sm-offset-2.col-sm-10
 							= f.submit "Create Dish", :class => "btn btn-default"
+							= link_to("Back", dishes_path, :class => "btn btn-default")

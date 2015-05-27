@@ -1,14 +1,14 @@
 #dishes_list
 	.container
+		h1.page_title Dishes listing
+		.search
+			= form_tag('/dishes', :method => 'get', id: "search-form")
+				= text_field_tag "search_form[keyword]", @keyword, placeholder: "search"
+				= submit_tag "Search", :name => nil
+		br
+		.create_dish
+			= link_to('Create a dish', new_dish_path, :class => "btn btn-info btn-lg")
 		.row
-			h1.page_title Dishes listing
-			.search
-				= form_tag('/dishes', :method => 'get', id: "search-form")
-					= text_field_tag "search_form[keyword]", @keyword, placeholder: "search"
-					= submit_tag "Search", :name => nil
-			br
-			.create_dish
-				= link_to('Create a dish', new_dish_path, :class => "btn btn-info btn-lg")
 			- if @dishes.any?
 				- @dishes.each do |dish|
 					.dish.col-md-3
