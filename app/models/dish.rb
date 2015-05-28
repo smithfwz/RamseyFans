@@ -6,4 +6,5 @@ class Dish < ActiveRecord::Base
 	belongs_to :fan
 
 	scope :search_by, ->(keyword){ where("title ILIKE ? OR description ILIKE ?", "%#{keyword}%", "%#{keyword}%")}
+	scope :published, ->{ where(published: true) }
 end
