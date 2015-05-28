@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DishesController, type: :controller do 
-
 	describe '#index' do
-
 		let!(:dishes)   { create_list(:dish, 2, title: 'Bun bo') }
 
 		it 'gets a list of dishes' do 

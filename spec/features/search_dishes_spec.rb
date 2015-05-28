@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User can search dishes' do 
-
 	describe 'User can search dishes' do 
 		let!(:com_dish) { create(:dish, title: 'Com Tam') }
 		let!(:pho_dish) { create(:dish, title: 'Pho Ga') }

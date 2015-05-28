@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Fan can sign up' do 
-
 	describe 'Fan can sign up' do 
 		it 'sign up' do
 			visit '/'
