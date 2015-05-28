@@ -1,0 +1,21 @@
+#dish_new
+	.container
+		h1.page_title Create/Edit dish
+		.product_form.col-sm-9
+			- url = @my_dish.new_record? ? my_dishes_path : my_dish_path(@my_dish)
+  		= semantic_form_for @my_dish, url: url do |f|
+
+				= render partial: 'form_field', locals: { f: f, field: :title }
+				= render partial: 'form_field', locals: { f: f, field: :description }
+				= render partial: 'form_field', locals: { f: f, field: :cost }
+				= render partial: 'form_field', locals: { f: f, field: :pax }
+
+				.form-group
+					= f.label :vegetarian, :class => 'col-sm-2 control-label'
+					.col-sm-10
+						= f.check_box :vegetarian
+
+				.form-group
+					.col-sm-offset-2.col-sm-10
+						= f.submit "Create", :class => "btn btn-default"
+						= link_to("Back", my_dishes_path, :class => "btn btn-default")
