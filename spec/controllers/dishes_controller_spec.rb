@@ -29,52 +29,52 @@ RSpec.describe DishesController, type: :controller do
 		end
 	end
 
-	describe '#new' do
-		context 'Authentication' do
-			context 'Fan has logged in' do 
-				let!(:fan) { create(:fan) }
-				before { sign_in fan }
+	# describe '#new' do
+	# 	context 'Authentication' do
+	# 		context 'Fan has logged in' do 
+	# 			let!(:fan) { create(:fan) }
+	# 			before { sign_in fan }
 
-				it 'displays the create form' do 
-					get :new
-					expect(assigns(:dish)).to be_a Dish
-				end
-			end
+	# 			it 'displays the create form' do 
+	# 				get :new
+	# 				expect(assigns(:dish)).to be_a Dish
+	# 			end
+	# 		end
 
-			context 'Fan has not logged in' do 
-				it 'redirects user to login page' do 
-					get :new
-					expect(response).to redirect_to new_fan_session_url
-				end
-			end
-		end
-	end
+	# 		context 'Fan has not logged in' do 
+	# 			it 'redirects user to login page' do 
+	# 				get :new
+	# 				expect(response).to redirect_to new_fan_session_url
+	# 			end
+	# 		end
+	# 	end
+	# end
 
-	describe '#create' do
-		def do_request
-			post :create, dish: params
-		end
+	# describe '#create' do
+	# 	def do_request
+	# 		post :create, dish: params
+	# 	end
 
-		let!(:fan) 	 { create(:fan) }
-		before { sign_in fan }
+	# 	let!(:fan) 	 { create(:fan) }
+	# 	before { sign_in fan }
 		
-		context 'Success' do 
-			let(:params) { build(:dish).attributes }
+	# 	context 'Success' do 
+	# 		let(:params) { build(:dish).attributes }
 
-			it 'save the dish' do 
-				expect{ do_request }.to change(Dish, :count).by(1)
-				expect(response).to redirect_to dishes_url
-			end
-		end
+	# 		it 'save the dish' do 
+	# 			expect{ do_request }.to change(Dish, :count).by(1)
+	# 			expect(response).to redirect_to dishes_url
+	# 		end
+	# 	end
 
-		context 'Failure' do
-			let(:params) { build(:dish, title: '').attributes }
+	# 	context 'Failure' do
+	# 		let(:params) { build(:dish, title: '').attributes }
 
-			it 'should not save the dish' do
-				expect{ do_request }.not_to change(Dish, :count)
-				expect(response).to render_template :new
-			end
-		end
-	end
+	# 		it 'should not save the dish' do
+	# 			expect{ do_request }.not_to change(Dish, :count)
+	# 			expect(response).to render_template :new
+	# 		end
+	# 	end
+	# end
 
 end
