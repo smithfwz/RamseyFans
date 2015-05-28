@@ -7,10 +7,11 @@
 				span Description: 
 				= @dish.description
 			- if @dish.cost
-				.cost Cost:  $#{@dish.cost}
+				.cost Cost:  #{number_to_currency(@dish.cost)}
 			- if @dish.pax
 				.pax Pax: #{@dish.pax}
-			- if @dish.vegetarian
-				.vegeterian Vegetarian: #{@dish.vegetarian}
+			.vegeterian Vegetarian: #{boolean_to_text(@dish.vegetarian)}
+			p 
+				i = 'Created ' + time_ago_in_words(@dish.created_at) + ' ago'
 			br
 			= link_to("Back to dishes listing", dishes_url, :class => 'btn btn-default')
