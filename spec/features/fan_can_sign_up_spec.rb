@@ -23,6 +23,7 @@ RSpec.describe 'Fan can sign up' do
 
 	describe 'Fan can login' do 
 		let!(:fan_smith) { create(:fan) }
+		
 		it 'login' do 
 			visit '/'
 

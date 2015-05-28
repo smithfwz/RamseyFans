@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'User can search dishes' do 
 
 	describe 'User can search dishes' do 
-		let!(:com_dish) { create(:dish) }
-		let!(:pho_dish) { create(:dish, title: 'Pho Ga', description: "Pho ga ngon hon" ) }
+		let!(:com_dish) { create(:dish, title: 'Com Tam') }
+		let!(:pho_dish) { create(:dish, title: 'Pho Ga') }
 
 		it 'search' do 
 			visit '/dishes'
@@ -15,7 +15,7 @@ RSpec.describe 'User can search dishes' do
 			click_on 'Search'
 
 			expect(page).to have_content 'Pho'
-			expect(page).not_to have_content 'chicken'
+			expect(page).not_to have_content 'Com Tam'
 		end
 	end
 end

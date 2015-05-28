@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Fan can create a dish' do 
 
 	describe 'Fan can create a dish' do 
-		let!(:fan) { create(:fan) }
-		let!(:dish) {  build(:dish, title: 'rice') }
+		let!(:fan)  { create(:fan) }
+		let!(:dish) { build(:dish, title: 'rice') }
 
 		it 'login and create a dish' do 
 			visit '/'
