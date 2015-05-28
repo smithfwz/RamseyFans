@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :fans
   resources :dishes
+  resources :my_dishes
   
   root to: "dishes#index"
   # The priority is based upon order of creation: first created -> highest priority.
