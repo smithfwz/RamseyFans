@@ -4,5 +4,7 @@ FactoryGirl.define do
 		description 'chicken rice is very good'
 		cost 				12.99
 		pax 				2
+		
+		association :fan 
 	end
 end

@@ -1,6 +1,5 @@
 FactoryGirl.define do
 	factory :fan do
-    name 'Smith'
     sequence(:email) { |n| "Smith-#{n}@example.com"}
     password '123123123'
 
