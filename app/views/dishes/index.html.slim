@@ -1,13 +1,17 @@
-#dishes_list
+#dishes-list
 	.container
-		h1.page_title Dishes listing
-		.search
-			= form_tag('/dishes', :method => 'get', id: "search-form")
-				= text_field_tag "search_form[keyword]", @keyword, placeholder: "search"
-				= submit_tag "Search", :name => nil
-		br
-		.create_dish
-			= link_to('Create a dish', new_dish_path, :class => "btn btn-info btn-lg")
+		.row
+			.col-md-12
+				h1.page_title Dishes listing
+		.row
+			.col-md-12
+				.search
+					= form_tag('/dishes', :method => 'get', id: "search-form")
+						= text_field_tag "search_form[keyword]", @keyword, placeholder: "search"
+						= submit_tag "Search", :name => nil
+				br
+				.create_dish
+					= link_to('Create a dish', new_dish_path, :class => "btn btn-info btn-lg")
 		.row
 			- if @dishes.any?
 				- @dishes.each do |dish|
@@ -22,4 +26,4 @@
 						.actions
 							= link_to('Detail', dish_path(dish), { :class => 'detail' })
 			- else
-				| No dish. Thanks!
+				| No dishes found.

@@ -1,15 +1,16 @@
-.container
-	#dish_show
-		h1.page_title Dish detail
-		h2.title= @dish.title
-		.description
-			span Description: 
-			= @dish.description
-		- if @dish.cost
-			.cost Cost:  $#{@dish.cost}
-		- if @dish.pax
-			.pax Pax: #{@dish.pax}
-		- if @dish.vegetarian
-			.vegeterian Vegetarian: #{@dish.vegetarian}
-	br
-	= link_to("Back to dishes listing", dishes_url, :class => 'btn btn-default')
+#dish-show.container
+	.row
+		.col-md-12
+			h1.page_title Dish detail
+			h2.title= @dish.title
+			.description
+				span Description: 
+				= @dish.description
+			- if @dish.cost
+				.cost Cost:  $#{@dish.cost}
+			- if @dish.pax
+				.pax Pax: #{@dish.pax}
+			- if @dish.vegetarian
+				.vegeterian Vegetarian: #{@dish.vegetarian}
+			br
+			= link_to("Back to dishes listing", dishes_url, :class => 'btn btn-default')
