@@ -11,6 +11,7 @@
 			- if @dish.pax
 				.pax Pax: #{@dish.pax}
 			.vegeterian Vegetarian: #{boolean_to_text(@dish.vegetarian)}
+			.published Publish #{boolean_to_text(@dish.published)}
 			p 
 				i = 'Created ' + time_ago_in_words(@dish.created_at) + ' ago'
 			br
