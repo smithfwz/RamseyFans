@@ -8,6 +8,10 @@ RSpec.describe Dish, type: :model do
 		it { should validate_numericality_of(:pax).is_greater_than(0).only_integer }
 	end
 
+	context 'Association' do
+		it { should belong_to(:fan)}
+	end
+
 	context 'search_by' do 
 		let!(:bun_dish) { create(:dish, title: 'Bun Bo') }
 		let!(:pho_dish) { create(:dish, title: 'Pho Ga' ) }
