@@ -8,10 +8,10 @@ RSpec.describe 'Fan can create a dish' do
 		it 'login and create a dish' do 
 			visit '/'
 
-			click_on 'Login'
+			click_on 'Sign in'
 
-			fill_in 'fan[email]', 	 with: 'smith@futureworkz.com'
-			fill_in 'fan[password]', with: '123123123'
+			fill_in 'fan[email]', 	 with: fan.email
+			fill_in 'fan[password]', with: fan.password
 
 			click_on 'Log in'
 			
@@ -26,7 +26,7 @@ RSpec.describe 'Fan can create a dish' do
 			fill_in 'Cost', 			 with: 12.22
 			fill_in 'Pax', 				 with: 2
 
-			click_on 'Create Dish'
+			click_on 'Create'
 
 			expect(page).to have_content 'pho ga'
 
