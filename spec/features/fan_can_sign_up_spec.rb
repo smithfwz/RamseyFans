@@ -26,12 +26,12 @@ RSpec.describe 'Fan can sign up' do
 		it 'login' do 
 			visit '/'
 
-			click_on 'Login'
+			click_on 'Sign in'
 
 			expect(page).not_to have_content 'Signed in successfully.'
 
-			fill_in 'fan[email]', 	 with: 'smith@futureworkz.com'
-			fill_in 'fan[password]', with: '123123123'
+			fill_in 'fan[email]', 	 with: fan_smith.email
+			fill_in 'fan[password]', with: fan_smith.password
 
 			click_on 'Log in'
 			

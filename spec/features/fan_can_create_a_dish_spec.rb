@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Fan can create a dish' do 
-	describe 'Fan can create a dish' do 
+RSpec.describe 'Fan can crud their own dish' do 
+	describe 'Fan can crud their own dish' do 
 		let!(:fan)  { create(:fan) }
 		let!(:dish) { build(:dish, title: 'rice') }
 
-		it 'login and create a dish' do 
+		it 'login and crud their own dish' do 
 			visit '/'
 
 			click_on 'Sign in'
@@ -26,10 +26,23 @@ RSpec.describe 'Fan can create a dish' do
 			fill_in 'Cost', 			 with: 12.22
 			fill_in 'Pax', 				 with: 2
 
-			click_on 'Create'
+			click_on 'Submit'
 
 			expect(page).to have_content 'pho ga'
 
+			click_on 'Detail'
+			click_on 'Edit dish'
+
+			fill_in 'Title', 			 with: 'hu tieu'
+			fill_in 'Description', with: 'this is hu tieu'
+			fill_in 'Cost', 			 with: 12.22
+			fill_in 'Pax', 				 with: 2
+			check 'dish[vegetarian]'
+
+			click_on 'Submit'
+
+			expect(page).to have_content 'hu tieu'
 		end
 	end
+
 end
