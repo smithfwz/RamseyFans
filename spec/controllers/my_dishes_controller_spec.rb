@@ -44,5 +44,38 @@ RSpec.describe MyDishesController, type: :controller do
 				end
 			end
     end
+
+    describe '#edit' do
+      let!(:dish) { create(:dish) }
+
+      it 'get the dish id' do
+        get :edit, id: dish
+        expect(assigns(:my_dish).id).to eq dish.id
+      end
+    end
+
+    describe '#update' do
+      def do_request
+        patch :update, id: my_dish, dish: params
+      end
+
+      let!(:my_dish) { create(:dish, fan: fan) }
+      let!(:params) { attributes_for(:dish, description: 'Banh canh cua') }
+      before { do_request }
+
+      it 'get the dish id' do
+        expect(assigns(:my_dish).id).to eq my_dish.id
+      end
+
+      context 'Success update' do
+        it 'update the dish' do
+          expect(my_dish.reload.description).to eq 'Banh canh cua'
+        end
+
+        it 'redirect upon success' do
+          expect(response).to redirect_to my_dishes_path
+        end
+      end
+    end
 	end
 end
