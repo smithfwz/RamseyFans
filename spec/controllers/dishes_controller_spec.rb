@@ -29,21 +29,23 @@ RSpec.describe DishesController, type: :controller do
 		end
 	end
 
-	describe '#new' do 
-		context 'Success' do 
-			let!(:fan) { create(:fan) }
-			before { sign_in fan }
+	describe '#new' do
+		context 'Authentication' do
+			context 'Fan has logged in' do 
+				let!(:fan) { create(:fan) }
+				before { sign_in fan }
 
-			it 'fan login' do 
-				get :new
-				expect(assigns(:dish)).to be_a Dish
+				it 'displays the create form' do 
+					get :new
+					expect(assigns(:dish)).to be_a Dish
+				end
 			end
-		end
 
-		context 'Fail' do 
-			it 'render new fan on failure' do 
-				get :new
-				expect(response).to redirect_to new_fan_session_url
+			context 'Fan has not logged in' do 
+				it 'redirects user to login page' do 
+					get :new
+					expect(response).to redirect_to new_fan_session_url
+				end
 			end
 		end
 	end
