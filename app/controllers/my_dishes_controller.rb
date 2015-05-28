@@ -49,7 +49,7 @@ class MyDishesController < ApplicationController
   end
 
   def my_dish_params
-    params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :fan_id)
+    params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :fan_id, :published)
   end
 
   def get_my_dish

@@ -3,7 +3,7 @@ class DishesController < ApplicationController
 	before_action :authenticate_fan!, except: [:index, :show]
 
 	def index
-		@dishes = Dish.all
+		@dishes = Dish.all.published
 
 		if search_keyword
 			@keyword = search_keyword
