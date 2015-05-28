@@ -61,7 +61,7 @@ RSpec.describe DishesController, type: :controller do
 		context 'Success' do 
 			let(:params) { build(:dish).attributes }
 
-			it 'save a dish' do 
+			it 'save the dish' do 
 				expect{ do_request }.to change(Dish, :count).by(1)
 				expect(response).to redirect_to dishes_url
 			end
