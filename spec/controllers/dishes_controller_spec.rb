@@ -4,18 +4,21 @@ RSpec.describe DishesController, type: :controller do
 
 	describe '#index' do
 
-		let!(:dishes) { create_list(:dish, 3) }
-		let!(:pho_dish) { create(:dish, title: 'Pho Ga' ) }
+		let!(:dishes)   { create_list(:dish, 2, title: 'Bun bo') }
 
 		it 'gets a list of dishes' do 
 			get :index
 			expect(assigns(:dishes).size).to eq Dish.all.count
 		end
 
-		it 'show a dish from the search result' do 
-			get :index, search_form: {keyword: "pho"}
+		context 'Search' do
+			let!(:pho_dish) { create(:dish, title: 'Pho Ga' ) }
 
-			expect(assigns(:dishes).first.title).to eq 'Pho Ga'
+			it 'show a dish from the search result' do 
+				get :index, search_form: {keyword: "pho"}
+				expect(assigns(:dishes).first.title).to eq 'Pho Ga'
+				expect(assigns(:dishes).count).to eq 1
+			end
 		end
 	end
 
@@ -48,19 +51,28 @@ RSpec.describe DishesController, type: :controller do
 	end
 
 	describe '#create' do
-		let!(:fan) { create(:fan) }
-
 		def do_request
 			post :create, dish: params
 		end
 
+		let!(:fan) 	 { create(:fan) }
+		before { sign_in fan }
+		
 		context 'Success' do 
-			before { sign_in fan }
 			let(:params) { build(:dish).attributes }
 
 			it 'save a dish' do 
 				expect{ do_request }.to change(Dish, :count).by(1)
 				expect(response).to redirect_to dishes_url
+			end
+		end
+
+		context 'Failure' do
+			let(:params) { build(:dish, title: '').attributes }
+
+			it 'should not save the dish' do
+				expect{ do_request }.not_to change(Dish, :count)
+				expect(response).to render_template :new
 			end
 		end
 	end
