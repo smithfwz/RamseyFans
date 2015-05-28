@@ -1,8 +1,15 @@
 FactoryGirl.define do
-  factory :fan do
-    email 'smith@futureworkz.com'
+	factory :fan do
+    name 'Smith'
+    sequence(:email) { |n| "Smith-#{n}@example.com"}
     password '123123123'
-    confirmed_at Time.now
-  end
 
+    after(:create) { |fan| fan.confirm }
+
+    trait :with_dishes do
+      after(:create) do |fan|
+        create_list(:dish, 2, fan: fan)
+      end
+    end
+  end
 end
